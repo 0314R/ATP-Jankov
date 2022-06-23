@@ -39,11 +39,22 @@ prove(G > D) :- select1(A/_, D, []),
 prove(G > D) :- select1(_/B, D, []),
 				prove(G > [B]).		% No cut because not invertible.
 
-% implication
-prove(G > D) :- select1(A=>B, G, G1), !,
-                prove(G > [A]),
-				prove([B|G1] > D).
+% left implication
+prove(G > E) :- select1( (C&D)=>B, G, G1), !,
+                prove( [ C=>(D=>B) | G1] > E).
 
+prove(G > E) :- select1( (C|D)=>B, G, G1), !,
+				prove( [ C=>B, D=>B | G1] > E).
+
+prove(G > E) :- select1( (C=>D)=>B, G, G1), !,
+                prove( [ C, (D=>B) | G1] > D),
+				prove( [B|G1] > E).
+
+prove(G > E) :- select1(P=>B, G, G0),
+				select1(P, G0, G1), !,
+				prove([P,B|G1] > E).
+
+% right implication
 prove(G > D) :- select1(A=>B, D, []), !,
                 prove([A|G] > [B]).
 
