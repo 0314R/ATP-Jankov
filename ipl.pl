@@ -9,9 +9,6 @@
 :- op(1100, xfy, '/').  % disjunction					Didn't use | because the axiom will be applied wrongly (e.g. member(a, [a|b]) ).
 :- op(1110, xfy, =>).   % implication
 :- op(1120, xfx, <=>).  % bi-implication
-:- op( 500, fy, !).     % universal quantifier:  ![X]:
-:- op( 500, fy, ?).     % existential quantifier:  ?[X]:
-:- op( 500,xfy, :).
 
 % -----------------------------------------------------------------
 prove0(F) :- prove([] > [F]).
@@ -57,6 +54,14 @@ prove(G > E) :- select1(P=>B, G, G0),
 % right implication
 prove(G > D) :- select1(A=>B, D, []), !,
                 prove([A|G] > [B]).
+
+% left negation
+prove(G > D) :- select1(~A, G, G1), !,
+				prove( [A => '#' | G1] > D).
+
+% right negation
+prove(G > D) :- select1(~A, D, []), !,
+				prove([A|G] > ['#']).
 
 % -----------------------------------------------------------------
 select1(X,L,L1) :- append(L2,[X|L3],L), append(L2,L3,L1).
