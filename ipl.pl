@@ -2,13 +2,13 @@
 % leanseq.pl - A sequent calculus prover implemented in Prolog
 % -----------------------------------------------------------------
 
-% operator definitions (TPTP syntax)
+% operator definitions (close to TPTP syntax)
 
 :- op( 500, fy, ~).     % negation
-:- op(1000, xfy, &).    % conjunction
-:- op(1100, xfy, '/').  % disjunction					Didn't use | because the axiom will be applied wrongly (e.g. member(a, [a|b]) ).
-:- op(1110, xfy, =>).   % implication
-:- op(1120, xfx, <=>).  % bi-implication
+:- op( 600, xfy, &).    % conjunction
+:- op( 700, xfy, '/').  % disjunction					Didn't use | (straight bar) because the axiom could be applied wrongly (e.g. member(a, [a|b]) ).
+:- op( 800, xfy, =>).   % implication
+:- op( 900, xfx, <=>).  % bi-implication
 
 % -----------------------------------------------------------------
 prove0(F) :- prove([] > [F]).
@@ -40,7 +40,7 @@ prove(G > D) :- select1(_/B, D, []),
 prove(G > E) :- select1( (C&D)=>B, G, G1), !,
                 prove( [ C=>(D=>B) | G1] > E).
 
-prove(G > E) :- select1( (C|D)=>B, G, G1), !,
+prove(G > E) :- select1( (C/D)=>B, G, G1), !,
 				prove( [ C=>B, D=>B | G1] > E).
 
 prove(G > E) :- select1( (C=>D)=>B, G, G1), !,
@@ -55,11 +55,11 @@ prove(G > E) :- select1(P=>B, G, G0),
 prove(G > D) :- select1(A=>B, D, []), !,
                 prove([A|G] > [B]).
 
-% left negation
+% left negation (structural, implication)
 prove(G > D) :- select1(~A, G, G1), !,
 				prove( [A => '#' | G1] > D).
 
-% right negation
+% right negation (structural, implication)
 prove(G > D) :- select1(~A, D, []), !,
 				prove([A|G] > ['#']).
 
