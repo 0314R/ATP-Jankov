@@ -14,6 +14,9 @@
 prove0(F) :- prove([] > [F]).
 % -----------------------------------------------------------------
 
+% reasoning from contradiction
+prove(G > _) :- member('#', G).
+
 % axiom
 prove(G > D) :- member(P,G), member(P,D), !.
 
