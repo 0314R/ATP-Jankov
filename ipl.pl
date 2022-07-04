@@ -14,7 +14,7 @@
 prove0(F) :- prove([] > [F]).
 % -----------------------------------------------------------------
 
-% reasoning from contradiction
+% falsity implies anything
 prove(G > _) :- member('#', G).
 
 % axiom
@@ -46,7 +46,7 @@ prove(G > E) :- select1( (C&D)=>B, G, G1), !,
 prove(G > E) :- select1( (C/D)=>B, G, G1), !,
 				prove( [ C=>B, D=>B | G1] > E).
 
-prove(G > E) :- select1( (C=>D)=>B, G, G1), !,
+prove(G > E) :- select1( (C=>D)=>B, G, G1),
                 prove( [ C, (D=>B) | G1] > [D]),
 				prove( [B|G1] > E).
 
