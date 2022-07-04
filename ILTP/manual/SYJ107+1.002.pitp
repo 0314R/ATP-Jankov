@@ -1,0 +1,46 @@
+%------------------------------------------------------------------------------
+% File     : SYJ107+1.002 : TPTP v0.0.0. Released v0.0.0.
+% Domain   :
+% Problem  :
+% Version  :
+% English  :
+
+% Refs     :
+% Source   :
+% Names    :
+
+% Status   : unknown
+% Rating   : ?
+% Syntax   : Number of formulae    :    4 (   1 unit)
+%            Number of atoms       :   13 (   0 equality)
+%            Maximal formula depth :    4 (   3 average)
+%            Number of connectives :    9 (   0 ~  ;   6  |;   2  &)
+%                                         (   0 <=>;   1 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    5 (   5 propositional; 0-0 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :    0 (   0 singleton;   0 !;   0 ?)
+%            Maximal term depth    :    0 (   0 average)
+
+% Comments :
+%          : tptp2X -f pitp SYJ107+1.002.p
+%------------------------------------------------------------------------------
+(a2)
+
+  &
+
+(( b -> ( ( b1 | a1 ) | b1 ) ))
+
+  &
+
+(( ( b | a ) | b ))
+
+  ->
+
+(( a | ( ( b & a1 ) | ( b1 & a2 ) ) ))
+
+%original above
+
+prove0(a2  & ( b => ( ( b1 / a1 ) / b1 ) ) & ( ( b / a ) / b ) => a / ( ( b & a1 ) / ( b1 & a2 ) ) ).
+
+%------------------------------------------------------------------------------

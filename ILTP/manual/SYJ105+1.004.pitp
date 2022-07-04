@@ -1,0 +1,38 @@
+%------------------------------------------------------------------------------
+% File     : SYJ105+1.004 : TPTP v0.0.0. Released v0.0.0.
+% Domain   :
+% Problem  :
+% Version  :
+% English  :
+
+% Refs     :
+% Source   :
+% Names    :
+
+% Status   : unknown
+% Rating   : ?
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :    6 (   0 equality)
+%            Maximal formula depth :    7 (   7 average)
+%            Number of connectives :   10 (   5 ~  ;   3  |;   2  &)
+%                                         (   0 <=>;   0 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   3 propositional; 0-0 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :    0 (   0 singleton;   0 !;   0 ?)
+%            Maximal term depth    :    0 (   0 average)
+
+% Comments :
+%          : tptp2X -f pitp SYJ105+1.004.p
+%------------------------------------------------------------------------------
+prove0( ~ ( ~ ( ( a & ( b & c ) ) / ( ( ~ a ) / ( ( ~ b ) / ( ~ c ) ) ) ) ) ).
+
+% fewer brackets
+
+prove0( ~ ( ~ ( ( a & ( b & c ) ) / ( ~ a / ( ~ b / ~ c ) ) ) ) ).
+
+% rewritten negation
+
+prove0( ( ( ( a & ( b & c ) ) / ( a => '#' / ( b => '#' / c => '#' ) ) ) => '#' ) => '#' ).
+
+%------------------------------------------------------------------------------
