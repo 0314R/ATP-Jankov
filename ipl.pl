@@ -11,6 +11,10 @@
 :- op( 900, xfx, <=>).  % bi-implication
 
 % -----------------------------------------------------------------
+% Try to prove; write result:
+test(F) :- prove0(F), !, write('Theorem\n').%format('This is a theorem:~n~w~n', F).
+test(_) :- write('\t\t\t\t\t\tNon-Theorem\n').%format('This is not a theorem:~n~w~n', F).
+% -----------------------------------------------------------------
 prove0(F) :- prove([] > [F]).
 % -----------------------------------------------------------------
 
