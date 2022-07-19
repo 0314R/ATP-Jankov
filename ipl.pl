@@ -43,6 +43,13 @@ prove(G > D) :- select1(A/_, D, []),
 prove(G > D) :- select1(_/B, D, []),
 				prove(G > [B]).		% No cut because not invertible.
 
+% rewrite bi-implication
+prove(G > D) :- select1( A<=>B, G, G1), !,
+				prove( [(A=>B) & (B=>A) | G1]  >  D).
+
+prove(G > D) :- select1( A<=>B, D, D1), !,
+				prove( G  >  [(A=>B) & (B=>A) | D1]).
+
 % left implication
 prove(G > E) :- select1( (C&D)=>B, G, G1), !,
                 prove( [ C=>(D=>B) | G1] > E).

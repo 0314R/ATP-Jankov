@@ -1,5 +1,5 @@
-% Original PITP:
-% (( ( a & b ) -> (( a -> b ) & ( b -> a)) ))
-
-?- test( ( a & b ) => (( a => b ) & ( b => a)) ).
+?- test( ( a & b ) => ( a <=> b ) ).
 ?- halt.
+
+% Bi-implication rewritten:
+% ?- test( ( a & b ) => (( a => b ) & ( b => a)) ).
