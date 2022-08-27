@@ -1,5 +1,5 @@
 cpl.pl is Otten's CPL ATP from the tutorial.
-ipl.pl is my IPL ATP.
+wipl.pl is WIPL: my IPL ATP.
 ________________________________________________________________________________
 
 The folder ILTP contains the ILTP library problems, as downloaded from the ILTP site (http://www.iltp.de/formulae.html).
@@ -18,7 +18,7 @@ This file can be recreated from the original ILTP folder by running the followin
 bash extract_ILTP_statuses.sh
 ________________________________________________________________________________
 
-My IPL ATP (ipl.pl) can be run on the converted ILTP problems by means of running the following script:
+WIPL can be run on the converted ILTP problems by means of running the following script:
 
 run.sh
 ________________________________________________________________________________

@@ -12,6 +12,7 @@
 
 % -----------------------------------------------------------------
 % Try to prove; write result:
+test(($true)) :- write('Theorem\n'). %special case that has no other use. only relevant for testcase SYN915+1
 test(F) :- prove0(F), !, write('Theorem\n').%format('This is a theorem:~n~w~n', F).
 test(_) :- write('\t\t\t\t\t\tNon-Theorem\n').%format('This is not a theorem:~n~w~n', F).
 % -----------------------------------------------------------------
@@ -49,6 +50,11 @@ prove(G > D) :- select1( A<=>B, G, G1), !,
 
 prove(G > D) :- select1( A<=>B, D, D1), !,
 				prove( G  >  [(A=>B) & (B=>A) | D1]).
+
+% special case: rewriting bi-implication when not the primary operator;
+% to not obstruct the third left implication rule below
+prove(G > E) :- select1( (C<=>D)=>B, G, G1), !,
+				prove( [((C=>D)=>B) & ((D=>C)=>B) | G1]  >  E).
 
 % left implication
 prove(G > E) :- select1( (C&D)=>B, G, G1), !,
