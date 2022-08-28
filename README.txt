@@ -25,7 +25,8 @@ ________________________________________________________________________________
 
 The file results_with_manual_termination.txt contains the result of running the above script
 (but manually terminating testcases where a solve is out of the question, namely when it is a
-larger version of the same abstract problem that already has had a time-out).
+larger version of the same abstract problem that already has had a time-out). The used testing environment is
+Intel Core 2.10GHz, Linux Mint 20 Cinnamon 4.6.7. 
 
 The table in processed results.pdf contains the final results, produced by comparing 
 each problem's status in ILTP_statuses.txt to its result in results_with_manual_termination.txt .
