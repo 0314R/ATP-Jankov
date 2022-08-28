@@ -23,4 +23,12 @@ WIPL can be run on the converted ILTP problems by means of running the following
 run.sh
 ________________________________________________________________________________
 
+The file results_with_manual_termination.txt contains the result of running the above script
+(but manually terminating testcases where a solve is out of the question, namely when it is a
+larger version of the same abstract problem that already has had a time-out).
+
+The table in processed results.pdf contains the final results, produced by comparing 
+each problem's status in ILTP_statuses.txt to its result in results_with_manual_termination.txt .
+________________________________________________________________________________
+
 Unfortunately, for some cases it is very slow and/or gives errors.
